@@ -18,14 +18,14 @@ import android.view.MenuItem;
  */
 public class GlassyActivity extends Activity {
 
-    private CompassService.CompassBinder mCompassService;
+    private GlassyService.CompassBinder mCompassService;
     private boolean mResumed;
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            if (service instanceof CompassService.CompassBinder) {
-                mCompassService = (CompassService.CompassBinder) service;
+            if (service instanceof GlassyService.CompassBinder) {
+                mCompassService = (GlassyService.CompassBinder) service;
                 openOptionsMenu();
             }
         }
@@ -39,7 +39,7 @@ public class GlassyActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bindService(new Intent(this, CompassService.class), mConnection, 0);
+        bindService(new Intent(this, GlassyService.class), mConnection, 0);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class GlassyActivity extends Activity {
                 mCompassService.readHeadingAloud();
                 return true;
             case R.id.stop:
-                stopService(new Intent(this, CompassService.class));
+                stopService(new Intent(this, GlassyService.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
