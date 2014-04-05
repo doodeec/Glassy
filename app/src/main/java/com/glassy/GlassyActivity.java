@@ -1,12 +1,9 @@
 package com.glassy;
 
-import com.glassy.utils.MathUtils;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Menu;
@@ -64,7 +61,7 @@ public class GlassyActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.compass, menu);
+        getMenuInflater().inflate(R.menu.glassy, menu);
         return true;
     }
 

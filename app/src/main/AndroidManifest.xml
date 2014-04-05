@@ -1,9 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.glassy1.app">
-
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="15" />
+    package="com.glassy">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
