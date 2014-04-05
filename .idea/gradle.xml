@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\home\dev-corner\glassy1" />
-            <option value="C:\home\dev-corner\glassy1\app" />
+            <option value="C:\Projects\glassy" />
+            <option value="C:\Projects\glassy\app" />
           </set>
         </option>
       </GradleProjectSettings>
