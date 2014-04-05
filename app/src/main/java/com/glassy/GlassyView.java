@@ -39,8 +39,9 @@ public class GlassyView extends View {
     private static final int NEEDLE_COLOR = Color.RED;
     private static final float TICK_WIDTH = 2;
     private static final float TICK_HEIGHT = 10;
-    private static final float DIRECTION_TEXT_HEIGHT = 24.0f;
-    private static final float PLACE_TEXT_HEIGHT = 22.0f;
+    private static final float DIRECTION_TEXT_HEIGHT = 20.0f;
+    private static final float PLACE_TEXT_HEIGHT = 30.0f;
+    private static final float RATING_TEXT_HEIGHT = 15.0f;
     private static final float PLACE_PIN_WIDTH = 14.0f;
     private static final float PLACE_TEXT_LEADING = 4.0f;
     private static final float PLACE_TEXT_MARGIN = 8.0f;
@@ -74,6 +75,7 @@ public class GlassyView extends View {
     private final Paint mTickPaint;
     private final Path mPath;
     private final TextPaint mPlacePaint;
+    private final TextPaint mRatingPaint;
     private final Bitmap mPlaceBitmap_small;
     private final Bitmap mPlaceBitmap_medium;
     private final Bitmap mPlaceBitmap_large;
@@ -113,6 +115,14 @@ public class GlassyView extends View {
         mPlacePaint.setColor(Color.WHITE);
         mPlacePaint.setTextSize(PLACE_TEXT_HEIGHT);
         mPlacePaint.setTypeface(Typeface.createFromFile(new File("/system/glass_fonts",
+                "Roboto-Light.ttf")));
+
+        mRatingPaint = new TextPaint();
+        mRatingPaint.setStyle(Paint.Style.FILL);
+        mRatingPaint.setAntiAlias(true);
+        mRatingPaint.setColor(Color.YELLOW);
+        mRatingPaint.setTextSize(RATING_TEXT_HEIGHT);
+        mRatingPaint.setTypeface(Typeface.createFromFile(new File("/system/glass_fonts",
                 "Roboto-Light.ttf")));
 
         mPath = new Path();
@@ -209,8 +219,6 @@ public class GlassyView extends View {
         canvas.restore();
 
         mPaint.setColor(NEEDLE_COLOR);
-        drawNeedle(canvas, false);
-        drawNeedle(canvas, true);
     }
 
     /**
@@ -234,7 +242,7 @@ public class GlassyView extends View {
 
                 canvas.drawText(direction,
                         i * degreesPerTick * pixelsPerDegree - mTextBounds.width() / 2,
-                        mTextBounds.height() / 2, mPaint);
+                        10, mPaint);
             } else {
                 // Draw a tick mark for the odd indices.
                 canvas.drawLine(i * degreesPerTick * pixelsPerDegree, -TICK_HEIGHT / 2, i
@@ -271,11 +279,13 @@ public class GlassyView extends View {
                             longitude2);
 
                     String name = place.getName();
+                    double rating = place.getRating();
                     double distanceKm = MathUtils.getDistance(latitude1, longitude1, latitude2,
                             longitude2);
                     String text = getContext().getResources().getString(
-                            // in meters
                         R.string.place_text_format, name, mDistanceFormat.format(distanceKm*1000));
+                    String ratingText = getContext().getResources().getString(
+                        R.string.place_rating_format, String.valueOf(rating));
 
                     // Measure the text and offset the text bounds to the location where the text
                     // will finally be drawn.
@@ -323,6 +333,10 @@ public class GlassyView extends View {
                                 offset + bearing * pixelsPerDegree + PLACE_PIN_WIDTH / 2
                                 + PLACE_TEXT_MARGIN, textBounds.top + PLACE_TEXT_HEIGHT,
                                 mPlacePaint);
+                        canvas.drawText(ratingText,
+                                offset + bearing * pixelsPerDegree + PLACE_PIN_WIDTH / 2
+                                        + PLACE_TEXT_MARGIN, textBounds.top + 2*PLACE_TEXT_HEIGHT,
+                                mRatingPaint);
                     }
                 }
             }

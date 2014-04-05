@@ -29,6 +29,7 @@
     <string name="spoken_heading_format">%1$d degrees %2$s</string>
     <string name="spoken_heading_format_one">%1$d degree %2$s</string>
     <string name="place_text_format">%1$s (%2$s m)</string>
+    <string name="place_rating_format">%1$s/5</string>
     <string-array name="spoken_directions">
         <item>north</item>
         <item>north north east</item>

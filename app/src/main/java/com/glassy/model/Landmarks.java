@@ -101,9 +101,10 @@ public class Landmarks {
         String name = object.optString("name");
         double latitude = object.optDouble("latitude", Double.NaN);
         double longitude = object.optDouble("longitude", Double.NaN);
+        double rating = object.optDouble("rating", Double.NaN);
 
         if (!name.isEmpty() && !Double.isNaN(latitude) && !Double.isNaN(longitude)) {
-            return new Place(latitude, longitude, name);
+            return new Place(latitude, longitude, name, rating);
         } else {
             return null;
         }

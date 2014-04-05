@@ -3,17 +3,20 @@
         {
             "name": "Comodo bar restaurant",
             "latitude": 49.210195,
-            "longitude": 16.601949
+            "longitude": 16.601949,
+            "rating": 2.0
         },
         {
             "name": "Sklípek",
             "latitude": 49.208926,
-            "longitude": 16.600405
+            "longitude": 16.600405,
+            "rating": 2.8
         },
         {
             "name": "Restaurace Sport bar Gambrinus",
             "latitude": 49.215872,
-            "longitude": 16.599729
+            "longitude": 16.599729,
+            "rating": 3.5
         }
     ]
 }

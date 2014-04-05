@@ -52,13 +52,13 @@ public class Place {
      * @param longitude the longitude of the place
      * @param name the name of the place
      */
-    public Place(double latitude, double longitude, String name) {
+    public Place(double latitude, double longitude, String name, double rating) {
         mLatitude = latitude;
         mLongitude = longitude;
         mName = name;
         //TODO
         mType = null;
-        mRating = 3.0;
+        mRating = rating;
     }
 
     /**
