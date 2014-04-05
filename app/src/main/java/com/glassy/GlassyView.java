@@ -39,7 +39,7 @@ public class GlassyView extends View {
     private static final int NEEDLE_COLOR = Color.RED;
     private static final float TICK_WIDTH = 2;
     private static final float TICK_HEIGHT = 10;
-    private static final float DIRECTION_TEXT_HEIGHT = 84.0f;
+    private static final float DIRECTION_TEXT_HEIGHT = 24.0f;
     private static final float PLACE_TEXT_HEIGHT = 22.0f;
     private static final float PLACE_PIN_WIDTH = 14.0f;
     private static final float PLACE_TEXT_LEADING = 4.0f;
@@ -74,7 +74,9 @@ public class GlassyView extends View {
     private final Paint mTickPaint;
     private final Path mPath;
     private final TextPaint mPlacePaint;
-    private final Bitmap mPlaceBitmap;
+    private final Bitmap mPlaceBitmap_small;
+    private final Bitmap mPlaceBitmap_medium;
+    private final Bitmap mPlaceBitmap_large;
     private final Rect mTextBounds;
     private final List<Rect> mAllBounds;
     private final NumberFormat mDistanceFormat;
@@ -121,7 +123,9 @@ public class GlassyView extends View {
         mDistanceFormat.setMinimumFractionDigits(0);
         mDistanceFormat.setMaximumFractionDigits(1);
 
-        mPlaceBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.place_mark);
+        mPlaceBitmap_small = BitmapFactory.decodeResource(context.getResources(), R.drawable.mark_far);
+        mPlaceBitmap_medium = BitmapFactory.decodeResource(context.getResources(), R.drawable.mark_middle);
+        mPlaceBitmap_large = BitmapFactory.decodeResource(context.getResources(), R.drawable.mark_close);
 
         // We use NaN to indicate that the compass is being drawn for the first
         // time, so that we can jump directly to the starting orientation
@@ -272,7 +276,7 @@ public class GlassyView extends View {
                     Rect textBounds = new Rect();
                     mPlacePaint.getTextBounds(text, 0, text.length(), textBounds);
                     textBounds.offsetTo((int) (offset + bearing * pixelsPerDegree
-                            + PLACE_PIN_WIDTH / 2 + PLACE_TEXT_MARGIN), canvas.getHeight() / 2
+                            + PLACE_PIN_WIDTH / 2 + PLACE_TEXT_MARGIN), canvas.getHeight() / 5
                             - (int) PLACE_TEXT_HEIGHT);
 
                     // Extend the bounds rectangle to include the pin icon and a small margin
@@ -306,7 +310,8 @@ public class GlassyView extends View {
                     if (numberOfTries <= MAX_OVERLAPPING_PLACE_NAMES) {
                         mAllBounds.add(textBounds);
 
-                        canvas.drawBitmap(mPlaceBitmap, offset + bearing * pixelsPerDegree
+                        // TODO decide which size to choose
+                        canvas.drawBitmap(mPlaceBitmap_small, offset + bearing * pixelsPerDegree
                                 - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
                         canvas.drawText(text,
                                 offset + bearing * pixelsPerDegree + PLACE_PIN_WIDTH / 2
