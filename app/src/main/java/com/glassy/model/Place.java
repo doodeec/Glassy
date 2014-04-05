@@ -1,10 +1,22 @@
 package com.glassy.model;
 
+import com.glassy.utils.MathUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * This class represents a point of interest that has geographical coordinates (latitude and
  * longitude) and a name that is displayed to the user.
  */
 public class Place {
+    public static double GetMyLatitude() {
+        return 49.211750;
+    }
+    public static double GetMyLongitude() {
+        return 16.598490;
+    }
+
 
     private final double mLatitude;
     private final double mLongitude;
@@ -12,6 +24,24 @@ public class Place {
     private final String mType;
     private final double mRating;
 
+
+    public double getDistance() {
+        return MathUtils.getDistance(mLatitude, mLongitude, Place.GetMyLatitude(), Place.GetMyLongitude());
+    }
+    public double getBearing() {
+        return MathUtils.getBearing(mLatitude, mLongitude, Place.GetMyLatitude(), Place.GetMyLongitude());
+    }
+
+    public Place(JSONObject jObj) throws JSONException {
+
+        mName = jObj.getString("name");
+        mType = jObj.getString("locationType");
+        mRating = jObj.getDouble("rating");
+
+        JSONObject jLoc = jObj.getJSONObject("loc");
+        mLatitude = jLoc.getDouble("lat");
+        mLongitude =jLoc.getDouble("lon");
+    }
     /**
      * Initializes a new place with the specified coordinates and name.
      *
