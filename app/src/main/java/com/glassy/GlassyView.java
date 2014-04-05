@@ -76,6 +76,7 @@ public class GlassyView extends View {
     private final Path mPath;
     private final TextPaint mPlacePaint;
     private final TextPaint mRatingPaint;
+    private final Bitmap mRatingStar;
     private final Bitmap mPlaceBitmap_small;
     private final Bitmap mPlaceBitmap_medium;
     private final Bitmap mPlaceBitmap_large;
@@ -133,6 +134,7 @@ public class GlassyView extends View {
         mDistanceFormat.setMinimumFractionDigits(0);
         mDistanceFormat.setMaximumFractionDigits(1);
 
+        mRatingStar = BitmapFactory.decodeResource(context.getResources(), R.drawable.rating_star);
         mPlaceBitmap_small = BitmapFactory.decodeResource(context.getResources(), R.drawable.mark_far);
         mPlaceBitmap_medium = BitmapFactory.decodeResource(context.getResources(), R.drawable.mark_middle);
         mPlaceBitmap_large = BitmapFactory.decodeResource(context.getResources(), R.drawable.mark_close);
@@ -188,8 +190,7 @@ public class GlassyView extends View {
      * @param places the list of {@code Place}s that should be displayed
      * @param type Typ
      */
-    public void setNearbyPlaces(List<Place> places, String type)
-    {
+    public void setNearbyPlaces(List<Place> places, String type) {
         mNearbyPlaces = places;
         mType = type;
     }
@@ -327,16 +328,31 @@ public class GlassyView extends View {
                         mAllBounds.add(textBounds);
 
                         // TODO decide which size to choose
-                        canvas.drawBitmap(mPlaceBitmap_small, offset + bearing * pixelsPerDegree
-                                - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
+                        if (distanceKm < 200) {
+                            canvas.drawBitmap(mPlaceBitmap_large, offset + bearing * pixelsPerDegree
+                                    - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
+                        } else if (distanceKm < 1000) {
+                            canvas.drawBitmap(mPlaceBitmap_medium, offset + bearing * pixelsPerDegree
+                                    - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
+                        } else {
+                            canvas.drawBitmap(mPlaceBitmap_small, offset + bearing * pixelsPerDegree
+                                    - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
+                        }
+
                         canvas.drawText(text,
                                 offset + bearing * pixelsPerDegree + PLACE_PIN_WIDTH / 2
                                 + PLACE_TEXT_MARGIN, textBounds.top + PLACE_TEXT_HEIGHT,
                                 mPlacePaint);
-                        canvas.drawText(ratingText,
+                        for (int i = 0; i < rating; i++) {
+                            canvas.drawBitmap(mRatingStar,
+                                    offset + bearing * pixelsPerDegree + PLACE_PIN_WIDTH / 2
+                                            + PLACE_TEXT_MARGIN + i*22, textBounds.top + 2*PLACE_TEXT_HEIGHT,
+                                    mRatingPaint);
+                        }
+                        /*canvas.drawText(ratingText,
                                 offset + bearing * pixelsPerDegree + PLACE_PIN_WIDTH / 2
                                         + PLACE_TEXT_MARGIN, textBounds.top + 2*PLACE_TEXT_HEIGHT,
-                                mRatingPaint);
+                                mRatingPaint);*/
                     }
                 }
             }
