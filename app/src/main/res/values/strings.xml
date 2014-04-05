@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Glassy1</string>
     <string name="glassy_voice_trigger">i am lost</string>
+
+    <string name="read_aloud">Read aloud</string>
+    <string name="stop">Stop</string>
 </resources>
