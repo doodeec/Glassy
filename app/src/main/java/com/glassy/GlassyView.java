@@ -73,7 +73,6 @@ public class GlassyView extends View {
 
     private final Paint mPaint;
     private final Paint mTickPaint;
-    private final Path mPath;
     private final TextPaint mPlacePaint;
     private final TextPaint mRatingPaint;
     private final Bitmap mRatingStar;
@@ -126,7 +125,6 @@ public class GlassyView extends View {
         mRatingPaint.setTypeface(Typeface.createFromFile(new File("/system/glass_fonts",
                 "Roboto-Light.ttf")));
 
-        mPath = new Path();
         mTextBounds = new Rect();
         mAllBounds = new ArrayList<Rect>();
 
@@ -243,7 +241,7 @@ public class GlassyView extends View {
 
                 canvas.drawText(direction,
                         i * degreesPerTick * pixelsPerDegree - mTextBounds.width() / 2,
-                        10, mPaint);
+                        mTextBounds.height() - 10, mPaint);
             } else {
                 // Draw a tick mark for the odd indices.
                 canvas.drawLine(i * degreesPerTick * pixelsPerDegree, -TICK_HEIGHT / 2, i
@@ -300,6 +298,7 @@ public class GlassyView extends View {
                     // to the right of the text, for the overlap calculations below.
                     textBounds.left -= PLACE_PIN_WIDTH + PLACE_TEXT_MARGIN;
                     textBounds.right += PLACE_TEXT_MARGIN;
+                    textBounds.bottom += PLACE_TEXT_HEIGHT;
 
                     // This loop attempts to find the best vertical position for the string by
                     // starting at the bottom of the display and checking to see if it overlaps
@@ -357,39 +356,6 @@ public class GlassyView extends View {
                 }
             }
         }
-    }
-
-    /**
-     * Draws a needle that is centered at the top or bottom of the compass.
-     *
-     * @param canvas the {@link Canvas} upon which to draw
-     * @param bottom true to draw the bottom needle, or false to draw the top needle
-     */
-    private void drawNeedle(Canvas canvas, boolean bottom) {
-        float centerX = getWidth() / 2.0f;
-        float origin;
-        float sign;
-
-        // Flip the vertical coordinates if we're drawing the bottom needle.
-        if (bottom) {
-            origin = getHeight();
-            sign = -1;
-        } else {
-            origin = 0;
-            sign = 1;
-        }
-
-        float needleHalfWidth = NEEDLE_WIDTH / 2;
-
-        mPath.reset();
-        mPath.moveTo(centerX - needleHalfWidth, origin);
-        mPath.lineTo(centerX - needleHalfWidth, origin + sign * (NEEDLE_HEIGHT - 4));
-        mPath.lineTo(centerX, origin + sign * NEEDLE_HEIGHT);
-        mPath.lineTo(centerX + needleHalfWidth, origin + sign * (NEEDLE_HEIGHT - 4));
-        mPath.lineTo(centerX + needleHalfWidth, origin);
-        mPath.close();
-
-        canvas.drawPath(mPath, mPaint);
     }
 
     /**
