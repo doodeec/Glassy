@@ -269,7 +269,8 @@ public class GlassyView extends View {
                     double distanceKm = MathUtils.getDistance(latitude1, longitude1, latitude2,
                             longitude2);
                     String text = getContext().getResources().getString(
-                        R.string.place_text_format, name, mDistanceFormat.format(distanceKm));
+                            // in meters
+                        R.string.place_text_format, name, mDistanceFormat.format(distanceKm*1000));
 
                     // Measure the text and offset the text bounds to the location where the text
                     // will finally be drawn.
