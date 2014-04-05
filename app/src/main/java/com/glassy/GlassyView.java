@@ -327,11 +327,11 @@ public class GlassyView extends View {
                         mAllBounds.add(textBounds);
 
                         // TODO decide which size to choose
-                        if (distanceKm < 200) {
-                            canvas.drawBitmap(mPlaceBitmap_large, offset + bearing * pixelsPerDegree
+                        if (distanceKm < 0.2) {
+                            canvas.drawBitmap(mPlaceBitmap_large, -40 + offset + bearing * pixelsPerDegree
                                     - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
-                        } else if (distanceKm < 1000) {
-                            canvas.drawBitmap(mPlaceBitmap_medium, offset + bearing * pixelsPerDegree
+                        } else if (distanceKm < 1) {
+                            canvas.drawBitmap(mPlaceBitmap_medium, -10 + offset + bearing * pixelsPerDegree
                                     - PLACE_PIN_WIDTH / 2, textBounds.top + 2, mPaint);
                         } else {
                             canvas.drawBitmap(mPlaceBitmap_small, offset + bearing * pixelsPerDegree
