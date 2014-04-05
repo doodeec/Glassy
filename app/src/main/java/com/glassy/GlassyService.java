@@ -11,8 +11,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 
-//import com.glassy.model.Landmarks;
-//import com.glassy.model.Place;
+import com.glassy.model.Landmarks;
+import com.glassy.model.Place;
 import com.glassy.utils.MathUtils;
 import com.google.android.glass.timeline.LiveCard;
 import com.google.android.glass.timeline.LiveCard.PublishMode;

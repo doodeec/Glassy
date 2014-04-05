@@ -1,6 +1,5 @@
 package com.glassy;
 
-import com.glassy1.app.R;
 import com.glassy.model.Place;
 import com.glassy.utils.MathUtils;
 

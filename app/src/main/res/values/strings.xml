@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Glassy1</string>
+    <string name="app_name">Glassy</string>
     <string name="glassy_voice_trigger">i am lost</string>
 
     <string name="read_aloud">Read aloud</string>

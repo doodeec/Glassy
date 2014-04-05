@@ -1,7 +1,5 @@
 package com.glassy;
 
-import com.glassy1.app.R;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -63,7 +61,7 @@ public class GlassyActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.glassyMenu, menu);
+        getMenuInflater().inflate(R.menu.glassy, menu);
         return true;
     }
 

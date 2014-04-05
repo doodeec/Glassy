@@ -1,0 +1,19 @@
+{
+    "landmarks": [
+        {
+            "name": "Comodo bar restaurant",
+            "latitude": 49.210195,
+            "longitude": 16.601949
+        },
+        {
+            "name": "Sklípek",
+            "latitude": 49.208926,
+            "longitude": 16.600405
+        },
+        {
+            "name": "Restaurace Sport bar Gambrinus",
+            "latitude": 49.215872,
+            "longitude": 16.599729
+        }
+    ]
+}
