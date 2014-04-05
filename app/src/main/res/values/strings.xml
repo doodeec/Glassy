@@ -51,4 +51,7 @@
     <!-- Warning messages. -->
     <string name="pitch_too_steep">Keep Glass horizontal to use the compass</string>
     <string name="magnetic_interference">Glass is detecting too much interference</string>
+
+
+    <string name="action_settings">Action sett</string>
 </resources>

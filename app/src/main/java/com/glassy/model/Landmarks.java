@@ -2,6 +2,7 @@ package com.glassy.model;
 
 import com.glassy.utils.MathUtils;
 import com.glassy.model.Place;
+import com.glassy.R;
 
 import android.content.Context;
 import android.util.Log;

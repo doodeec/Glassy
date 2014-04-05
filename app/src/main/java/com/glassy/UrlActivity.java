@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.glassy.model.Place;
 import com.glassy.utils.PlacesParser;
-import com.glassy1.app.R;
 
 import java.util.ArrayList;
 
