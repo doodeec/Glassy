@@ -62,7 +62,7 @@ public class GlassyService extends Service {
 
     private TimelineManager mTimelineManager;
     private LiveCard mLiveCard;
-    private CompassRenderer mRenderer;
+    private GlassyRenderer mRenderer;
 
     @Override
     public void onCreate() {
@@ -98,12 +98,12 @@ public class GlassyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (mLiveCard == null) {
             mLiveCard = mTimelineManager.createLiveCard(LIVE_CARD_ID);
-            mRenderer = new CompassRenderer(this, mOrientationManager, mLandmarks);
+            mRenderer = new GlassyRenderer(this, mOrientationManager, mLandmarks);
 
             mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder().addCallback(mRenderer);
 
             // Display the options menu when the live card is tapped.
-            Intent menuIntent = new Intent(this, CompassMenuActivity.class);
+            Intent menuIntent = new Intent(this, GlassyActivity.class);
             menuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             mLiveCard.setAction(PendingIntent.getActivity(this, 0, menuIntent, 0));
 
