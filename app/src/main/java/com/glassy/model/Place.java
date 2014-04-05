@@ -9,6 +9,8 @@ public class Place {
     private final double mLatitude;
     private final double mLongitude;
     private final String mName;
+    private final String mType;
+    private final double mRating;
 
     /**
      * Initializes a new place with the specified coordinates and name.
@@ -17,10 +19,12 @@ public class Place {
      * @param longitude the longitude of the place
      * @param name the name of the place
      */
-    public Place(double latitude, double longitude, String name) {
+    public Place(double latitude, double longitude, String name, String type, double rating) {
         mLatitude = latitude;
         mLongitude = longitude;
         mName = name;
+        mType = type;
+        mRating = rating;
     }
 
     /**
@@ -48,5 +52,21 @@ public class Place {
      */
     public String getName() {
         return mName;
+    }
+
+    /**
+     * Get type
+     * @return Type
+     */
+    public String getType() {
+        return mType;
+    }
+
+    /**
+     * Get rating
+     * @return rating
+     */
+    public double getRating() {
+        return mRating;
     }
 }
