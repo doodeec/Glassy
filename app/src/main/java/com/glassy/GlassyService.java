@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 
@@ -54,10 +55,13 @@ public class GlassyService extends Service {
         }
 
         public void changeType(String newType) {
-            Place.LAST_TYPE = newType;
-            mRenderer = new GlassyRenderer(getApplicationContext(), mOrientationManager, mLandmarks);
-            mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder().addCallback(mRenderer);
+            changeMyType(newType);
         }
+    }
+
+    public void changeMyType(String newType) {
+        Place.LAST_TYPE = newType;
+        onCreate();
     }
 
     private final GlassyBinder mBinder = new GlassyBinder();
