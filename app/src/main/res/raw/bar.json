@@ -1,0 +1,59 @@
+{
+  "places": [
+    {
+      "name": "Klub Fléda",
+      "locationType": "bar",
+      "rating": 4.1,
+      "_id": "533ff2484f384b40202b7a45",
+      "__v": 0,
+      "loc": {
+        "lat": 49.209906,
+        "lon": 16.603368
+      }
+    },
+    {
+      "name": "Klub Alterna",
+      "locationType": "bar",
+      "rating": 4,
+      "_id": "533ff2484f384b40202b7a4a",
+      "__v": 0,
+      "loc": {
+        "lat": 49.210447,
+        "lon": 16.594718
+      }
+    },
+    {
+      "name": "Brio Klub",
+      "locationType": "bar",
+      "rating": 3.6,
+      "_id": "533ff2484f384b40202b7a4b",
+      "__v": 0,
+      "loc": {
+        "lat": 49.21276,
+        "lon": 16.600726
+      }
+    },
+    {
+      "name": "Pohádková hospůdka",
+      "locationType": "bar",
+      "rating": 4,
+      "_id": "533ff2484f384b40202b7a4c",
+      "__v": 0,
+      "loc": {
+        "lat": 49.218381,
+        "lon": 16.588045
+      }
+    },
+    {
+      "name": "Hospůdka u Jaróša",
+      "locationType": "bar",
+      "rating": 3.6,
+      "_id": "533ff2484f384b40202b7a4d",
+      "__v": 0,
+      "loc": {
+        "lat": 49.221745,
+        "lon": 16.585406
+      }
+    }
+  ]
+}

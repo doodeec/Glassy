@@ -44,7 +44,7 @@ public class UrlActivity extends Activity {
     public void getMyPlaces(String type) {
         Bundle bun = new Bundle();
         bun.putString("type", type);
-        new GetPlacesTask(this).execute(bun);
+        //new GetPlacesTask(this).execute(bun);
     }
 
     public void getBars(View v) {

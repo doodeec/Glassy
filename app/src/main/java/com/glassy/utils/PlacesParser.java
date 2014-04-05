@@ -21,8 +21,12 @@ public class PlacesParser {
     public static ArrayList<Place> GetPlaces(JSONObject obj)
     {
         ArrayList<Place> places = new ArrayList<Place>();
-        //ArrayList<Place> places = null;
+        AddPlaces(places, obj);
+        return places;
+    }
 
+    public static void AddPlaces(ArrayList<Place> places, JSONObject obj)
+    {
         try
         {
             JSONArray jPlaces = obj.getJSONArray("places");
@@ -34,8 +38,5 @@ public class PlacesParser {
         catch (Exception ex) {
             Log.d(MY_TAG, "Exception: " + ex.getMessage() + "\n");
         }
-
-
-        return places;
     }
 }

@@ -56,7 +56,7 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
     private final RelativeLayout mTipsContainer;
     private final TextView mTipsView;
     private final OrientationManager mOrientationManager;
-//    private final Landmarks mLandmarks;
+    private final Landmarks mLandmarks;
 
     public void myLocationChanged(Location newLocation) {
         Bundle bun = new Bundle();
@@ -84,11 +84,10 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
         @Override
         public void onLocationChanged(OrientationManager orientationManager) {
             Location location = orientationManager.getLocation();
-            /*
             List<Place> places = mLandmarks.getNearbyLandmarks(
                     location.getLatitude(), location.getLongitude());
-            mCompassView.setNearbyPlaces(places);
-            */
+            mCompassView.setNearbyPlaces(places, Place.LAST_TYPE);
+
         }
 
         @Override
@@ -132,7 +131,7 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
      * orientation manager, and landmark collection.
      */
     public GlassyRenderer(Context context, OrientationManager orientationManager,
-                Landmarks landmarks) {
+                          Landmarks landmarks) {
         LayoutInflater inflater = LayoutInflater.from(context);
         mLayout = (FrameLayout) inflater.inflate(R.layout.glassy, null);
         mLayout.setWillNotDraw(false);
@@ -142,7 +141,7 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
         mTipsView = (TextView) mLayout.findViewById(R.id.tips_view);
 
         mOrientationManager = orientationManager;
-//        mLandmarks = landmarks;
+        mLandmarks = landmarks;
 
         mCompassView.setOrientationManager(mOrientationManager);
     }
@@ -163,13 +162,10 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
 
         if (mOrientationManager.hasLocation()) {
             Location location = mOrientationManager.getLocation();
-            myLocationChanged(location);
-
-            /*
+            //myLocationChanged(location);
             List<Place> nearbyPlaces = mLandmarks.getNearbyLandmarks(
                     location.getLatitude(), location.getLongitude());
-            mCompassView.setNearbyPlaces(nearbyPlaces);
-            */
+            mCompassView.setNearbyPlaces(nearbyPlaces, Place.LAST_TYPE);
         }
 
         mRenderThread = new RenderThread();

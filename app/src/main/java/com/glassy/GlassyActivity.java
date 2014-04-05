@@ -2,12 +2,15 @@ package com.glassy;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.glassy.model.Place;
 
 /**
  * This activity manages the options menu that appears when the user taps on the compass's live
@@ -61,15 +64,25 @@ public class GlassyActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        mCompassService.readHeadingAloud();
         getMenuInflater().inflate(R.menu.glassy, menu);
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.read_aloud:
-                mCompassService.readHeadingAloud();
+//            case R.id.read_aloud:
+//                return true;
+            case R.id.bar:
+                mCompassService.changeType("bar");
+                return true;
+            case R.id.restaurant:
+                mCompassService.changeType("restaurant");
+                return true;
+            case R.id.shop:
+                mCompassService.changeType("shop");
                 return true;
             case R.id.stop:
                 stopService(new Intent(this, GlassyService.class));
@@ -78,6 +91,8 @@ public class GlassyActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
     @Override
     public void onOptionsMenuClosed(Menu menu) {
@@ -89,4 +104,6 @@ public class GlassyActivity extends Activity {
         // item is selected from the menu or when the menu is dismissed by swiping down.
         finish();
     }
+
+
 }

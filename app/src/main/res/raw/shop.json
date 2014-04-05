@@ -1,0 +1,59 @@
+{
+  "places": [
+    {
+      "name": "BILLA",
+      "locationType": "shop",
+      "rating": 3.1,
+      "_id": "533ff2484f384b40202b7a4e",
+      "__v": 0,
+      "loc": {
+        "lat": 49.210242,
+        "lon": 16.593496
+      }
+    },
+    {
+      "name": "Kaufland",
+      "locationType": "shop",
+      "rating": 3.2,
+      "_id": "533ff2484f384b40202b7a4f",
+      "__v": 0,
+      "loc": {
+        "lat": 49.215359,
+        "lon": 16.6042
+      }
+    },
+    {
+      "name": "Nákupní centrum Královo Pole",
+      "locationType": "shop",
+      "rating": 4,
+      "_id": "533ff2484f384b40202b7a50",
+      "__v": 0,
+      "loc": {
+        "lat": 49.217636,
+        "lon": 16.607622
+      }
+    },
+    {
+      "name": "Supermarket Albert",
+      "locationType": "shop",
+      "rating": 2.5,
+      "_id": "533ff2484f384b40202b7a51",
+      "__v": 0,
+      "loc": {
+        "lat": 49.210218,
+        "lon": 16.600962
+      }
+    },
+    {
+      "name": "Potraviny Holánek",
+      "locationType": "shop",
+      "rating": 2.1,
+      "_id": "533ff2484f384b40202b7a52",
+      "__v": 0,
+      "loc": {
+        "lat": 49.210218,
+        "lon": 16.600962
+      }
+    }
+  ]
+}

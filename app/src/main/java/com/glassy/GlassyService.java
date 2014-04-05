@@ -51,7 +51,12 @@ public class GlassyService extends Service {
 
             String headingText = res.getString(headingFormat, roundedHeading, directionName);
             //mSpeech.speak(headingText, TextToSpeech.QUEUE_FLUSH, null);
-            mSpeech.speak("You searched for " + Place.LAST_TYPE , TextToSpeech.QUEUE_FLUSH, null);
+        }
+
+        public void changeType(String newType) {
+            Place.LAST_TYPE = newType;
+            mRenderer = new GlassyRenderer(getApplicationContext(), mOrientationManager, mLandmarks);
+            mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder().addCallback(mRenderer);
         }
     }
 

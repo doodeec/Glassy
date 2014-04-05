@@ -11,7 +11,7 @@ import org.json.JSONObject;
  */
 public class Place {
 
-    public static String LAST_TYPE = "none";
+    public static String LAST_TYPE = "bar";
 
     public static double GetMyLatitude() {
         return 49.211750;

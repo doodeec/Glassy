@@ -1,0 +1,48 @@
+{
+  "places": [
+    {
+      "name": "Comodo bar restaurant",
+      "locationType": "restaurant",
+      "rating": 3.8,
+      "_id": "533ff2484f384b40202b7a46",
+      "__v": 0,
+      "loc": {
+        "lat": 49.210195,
+        "lon": 16.601949
+      }
+    },
+    {
+      "name": "Sklípek",
+      "locationType": "restaurant",
+      "rating": 2.8,
+      "_id": "533ff2484f384b40202b7a47",
+      "__v": 0,
+      "loc": {
+        "lat": 49.208926,
+        "lon": 16.600405
+      }
+    },
+    {
+      "name": "Restaurace Sport bar Gambrinus",
+      "locationType": "restaurant",
+      "rating": 0,
+      "_id": "533ff2484f384b40202b7a48",
+      "__v": 0,
+      "loc": {
+        "lat": 49.215872,
+        "lon": 16.599729
+      }
+    },
+    {
+      "name": "SEVERKA - RESTAURACE, VINÁRNA",
+      "locationType": "restaurant",
+      "rating": 3.3,
+      "_id": "533ff2484f384b40202b7a49",
+      "__v": 0,
+      "loc": {
+        "lat": 49.207756,
+        "lon": 16.597765
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package com.glassy.model;
 import com.glassy.utils.MathUtils;
 import com.glassy.model.Place;
 import com.glassy.R;
+import com.glassy.utils.PlacesParser;
 
 import android.content.Context;
 import android.util.Log;
@@ -49,7 +50,19 @@ public class Landmarks {
         // a significant penalty to the application. If the landmark data were much larger,
         // we may want to load it in the background instead.
         String jsonString = readLandmarksResource(context);
-        populatePlaceList(jsonString);
+        //populatePlaceList(jsonString);
+
+        try
+        {
+            if (!jsonString.equals("")) {
+                // parse
+                JSONObject json = new JSONObject(jsonString);
+                PlacesParser.AddPlaces(mPlaces, json);
+            }
+        }
+        catch (Exception ex) {
+            Log.d("Landmarks", "Exception: " + ex.getMessage());
+        }
     }
 
     /**
@@ -115,7 +128,16 @@ public class Landmarks {
      */
     private static String readLandmarksResource(Context context) {
         //TODO load JSON
-        InputStream is = context.getResources().openRawResource(R.raw.landmarks);
+        InputStream is = null;
+        if (Place.LAST_TYPE.equals("bar"))
+            is = context.getResources().openRawResource(R.raw.bar);
+        else if (Place.LAST_TYPE.equals("restaurant"))
+            is = context.getResources().openRawResource(R.raw.restaurant);
+        else if (Place.LAST_TYPE.equals("shop"))
+            is = context.getResources().openRawResource(R.raw.shop);
+        else
+            return "";
+
         StringBuffer buffer = new StringBuffer();
 
         try {

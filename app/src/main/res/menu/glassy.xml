@@ -2,9 +2,17 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/read_aloud"
-        android:title="@string/read_aloud"
-        android:icon="@drawable/ic_read_aloud"/>
+        android:id="@+id/bar"
+        android:title="@string/bar"
+        android:icon="@drawable/ic_bar"/>
+    <item
+        android:id="@+id/shop"
+        android:title="@string/shop"
+        android:icon="@drawable/ic_shop"/>
+    <item
+        android:id="@+id/restaurant"
+        android:title="@string/restaurant"
+        android:icon="@drawable/ic_restaurant"/>
     <item
         android:id="@+id/stop"
         android:title="@string/stop"
