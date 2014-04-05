@@ -10,6 +10,9 @@ import org.json.JSONObject;
  * longitude) and a name that is displayed to the user.
  */
 public class Place {
+
+    public static String LAST_TYPE = "none";
+
     public static double GetMyLatitude() {
         return 49.211750;
     }

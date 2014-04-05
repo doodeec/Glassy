@@ -50,7 +50,8 @@ public class GlassyService extends Service {
             }
 
             String headingText = res.getString(headingFormat, roundedHeading, directionName);
-            mSpeech.speak(headingText, TextToSpeech.QUEUE_FLUSH, null);
+            //mSpeech.speak(headingText, TextToSpeech.QUEUE_FLUSH, null);
+            mSpeech.speak("You searched for " + Place.LAST_TYPE , TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 

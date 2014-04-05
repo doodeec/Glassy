@@ -56,7 +56,7 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
     private final RelativeLayout mTipsContainer;
     private final TextView mTipsView;
     private final OrientationManager mOrientationManager;
-    private final Landmarks mLandmarks;
+//    private final Landmarks mLandmarks;
 
     public void myLocationChanged(Location newLocation) {
         Bundle bun = new Bundle();
@@ -142,7 +142,7 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
         mTipsView = (TextView) mLayout.findViewById(R.id.tips_view);
 
         mOrientationManager = orientationManager;
-        mLandmarks = landmarks;
+//        mLandmarks = landmarks;
 
         mCompassView.setOrientationManager(mOrientationManager);
     }

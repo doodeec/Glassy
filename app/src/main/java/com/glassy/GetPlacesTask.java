@@ -43,6 +43,7 @@ public class GetPlacesTask extends AsyncTask<Bundle, ArrayList<Place>, ArrayList
 
 		mType = bundle[0].getString("type");
 		String url = SERVER_URL + mType;
+        c = mType;
 
         ArrayList<Place> places = null;
 		HttpClient httpclient = new DefaultHttpClient();
