@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Location;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -56,6 +58,15 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
     private final OrientationManager mOrientationManager;
     private final Landmarks mLandmarks;
 
+    public void myLocationChanged(Location newLocation) {
+        Bundle bun = new Bundle();
+        bun.putString("type", "shop");
+        bun.putDouble("lat", newLocation.getLatitude());
+        bun.putDouble("lon", newLocation.getLongitude());
+        new GetPlacesTask(this).execute(bun);
+    }
+
+
     private final OrientationManager.OnChangedListener mCompassListener =
             new OrientationManager.OnChangedListener() {
 
@@ -73,9 +84,11 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
         @Override
         public void onLocationChanged(OrientationManager orientationManager) {
             Location location = orientationManager.getLocation();
+            /*
             List<Place> places = mLandmarks.getNearbyLandmarks(
                     location.getLatitude(), location.getLongitude());
             mCompassView.setNearbyPlaces(places);
+            */
         }
 
         @Override
@@ -84,6 +97,35 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
             updateTipsView();
         }
     };
+
+
+    public void publishResults(ArrayList<Place> places, String type) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Type: ");
+        sb.append(type);
+        sb.append("\n---------------------\n");
+
+        if (places != null) {
+            sb.append("Size: ");
+            sb.append(places.size());
+            sb.append("\n-----\n");
+            for (Place p : places) {
+                sb.append("Name: ");
+                sb.append(p.getName());
+                sb.append("\nRating: ");
+                sb.append(p.getRating());
+                sb.append("\n*******\n");
+            }
+        }
+        else {
+            sb.append("Places is NULL");
+            sb.append("\n*******\n");
+        }
+        //((TextView)findViewById(R.id.txtResponse)).setText(sb.toString());
+        Log.d("Landmarks", "Result: " + sb.toString());
+
+        mCompassView.setNearbyPlaces(places, type);
+    }
 
     /**
      * Creates a new instance of the {@code CompassRenderer} with the specified context,
@@ -121,9 +163,13 @@ public class GlassyRenderer implements SurfaceHolder.Callback {
 
         if (mOrientationManager.hasLocation()) {
             Location location = mOrientationManager.getLocation();
+            myLocationChanged(location);
+
+            /*
             List<Place> nearbyPlaces = mLandmarks.getNearbyLandmarks(
                     location.getLatitude(), location.getLongitude());
             mCompassView.setNearbyPlaces(nearbyPlaces);
+            */
         }
 
         mRenderThread = new RenderThread();

@@ -29,10 +29,10 @@ public class GetPlacesTask extends AsyncTask<Bundle, ArrayList<Place>, ArrayList
 
 	private static final String MY_TAG = "GetPlacesTask";
 	private String mType;
-	private WeakReference<Activity> wr;
+	private WeakReference<GlassyRenderer> wr;
 
-	public GetPlacesTask(Activity act) {
-		wr = new WeakReference<Activity>(act);
+	public GetPlacesTask(GlassyRenderer gr) {
+		wr = new WeakReference<GlassyRenderer>(gr);
 	}
 
     public static final  String TAG = "GetPlacesTask";
@@ -92,7 +92,6 @@ public class GetPlacesTask extends AsyncTask<Bundle, ArrayList<Place>, ArrayList
 	protected void onPostExecute(ArrayList<Place> places) {
 		Log.d(MY_TAG, "GetPictureTask onPostExecute");
 
-        ((UrlActivity) wr.get()).publishResults(places, mType);
-
+        wr.get().publishResults(places, mType);
     }
 }

@@ -168,15 +168,20 @@ public class GlassyView extends View {
         animateTo(mHeading);
     }
 
+    private String mType = "";
+
     /**
      * Sets the list of nearby places that the compass should display. This list is recalculated
      * whenever the user's location changes, so that only locations within a certain distance will
      * be displayed.
      *
      * @param places the list of {@code Place}s that should be displayed
+     * @param type Typ
      */
-    public void setNearbyPlaces(List<Place> places) {
+    public void setNearbyPlaces(List<Place> places, String type)
+    {
         mNearbyPlaces = places;
+        mType = type;
     }
 
     @Override
