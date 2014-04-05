@@ -15,14 +15,14 @@ import android.view.MenuItem;
  */
 public class GlassyActivity extends Activity {
 
-    private GlassyService.CompassBinder mCompassService;
+    private GlassyService.GlassyBinder mCompassService;
     private boolean mResumed;
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            if (service instanceof GlassyService.CompassBinder) {
-                mCompassService = (GlassyService.CompassBinder) service;
+            if (service instanceof GlassyService.GlassyBinder) {
+                mCompassService = (GlassyService.GlassyBinder) service;
                 openOptionsMenu();
             }
         }

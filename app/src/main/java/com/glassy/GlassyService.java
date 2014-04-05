@@ -30,7 +30,7 @@ public class GlassyService extends Service {
      * A binder that gives other components access to the speech capabilities provided by the
      * service.
      */
-    public class CompassBinder extends Binder {
+    public class GlassyBinder extends Binder {
         /**
          * Read the current heading aloud using the text-to-speech engine.
          */
@@ -54,7 +54,7 @@ public class GlassyService extends Service {
         }
     }
 
-    private final CompassBinder mBinder = new CompassBinder();
+    private final GlassyBinder mBinder = new GlassyBinder();
 
     private OrientationManager mOrientationManager;
     private Landmarks mLandmarks;
